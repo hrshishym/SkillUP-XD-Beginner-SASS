@@ -1,0 +1,43 @@
+/**
+* First View
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+.p-fv {
+    margin-top           : f.rem(96px);
+    width                : 100%;
+    height               : 70vh;
+    /* From 400px@320px To 823@800px */
+    background-image     : url(../img/fv.jpg);
+    background-size      : cover;
+    background-position  : center;
+    background-repeat    : no-repeat;
+    /* SP版は背景画像を固定 */
+    /* background-attachment: fixed; */ /* iOS Safariのバグのため中止 */
+    text-align           : center;
+    padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem); // 本当は数式で計算
+    /* From 100px@320px To 298@800px */
+    padding-top          : 20vh;
+
+    @include f.mq(pc) {
+        margin-top           : f.rem(137px);
+        height               : f.rem(823px);
+        height               : clamp(25rem, 7.37500rem + 88.12500vw, 51.4375rem); // 本当は数式で計算
+        padding-top          : clamp(6.25rem, -2.00000rem + 41.25000vw, 18.625rem); // 本当は数式で計算
+        /* PC版は背景画像をスクロールさせる */
+        background-attachment: scroll;
+    }
+
+    &__heading {
+        font-family   : g.$font-family-fv;
+        font-size     : f.rem(48px);
+        font-weight   : 700;
+        letter-spacing: 0.4rem;
+        color         : white;
+
+        @include f.mq(pc) {
+            font-size: f.rem(80px);
+        }
+    }
+}

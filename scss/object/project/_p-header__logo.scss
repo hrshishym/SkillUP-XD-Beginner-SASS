@@ -1,0 +1,14 @@
+/**
+* Header Logo
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* ロゴ */
+.p-header__logo {
+    font-family   : g.$font-family-logo;
+    font-size     : f.rem(26px);
+    font-weight   : 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}

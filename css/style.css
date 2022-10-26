@@ -1,0 +1,630 @@
+@charset "UTF-8";
+/**
+* Variables
+* ========================== */
+/* Font */
+/* Color */
+/* Content Size */
+/**
+* Break Points
+* ========================== */
+/**
+* Functions
+* ========================== */
+/**
+* Base
+* ========================== */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+@media screen and (max-width: 375px) {
+  html {
+    /* ~375px */
+    font-size: 4.2666vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  html {
+    /* 768px ~ インナー幅 + 余白 */
+    font-size: clamp(10px, 1.2820512821vw, 16px);
+  }
+}
+
+body {
+  font-family: "メイリオ", "Meiryo", "ＭＳ ゴシック", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-size: unset;
+  font-weight: unset;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  margin: 0ch;
+}
+
+section {
+  scroll-margin-top: 6rem;
+}
+@media screen and (min-width: 768px) {
+  section {
+    scroll-margin-top: 8.5625rem;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}
+
+/**
+* Header
+* ========================= */
+/* 最上部に固定し、スクロールに追従 
+ */
+.l-header {
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+
+/**
+* Footer
+* ========================= */
+/**
+* Section Heading(title)
+* ========================= */
+.c-section-heading {
+  font-size: 1.5rem;
+  font-family: "Montserrat", "メイリオ", "Meiryo", "ＭＳ ゴシック", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2222222222;
+}
+@media screen and (min-width: 768px) {
+  .c-section-heading {
+    font-size: 2.25rem;
+  }
+}
+.c-section-heading span {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 0.67rem;
+}
+
+/**
+* More button
+* ========================= */
+.c-more-button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-radius: 0;
+  border: solid 1px black;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+.c-more-button::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #c7c8c0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.c-more-button:hover::before {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.c-more-button a {
+  display: inline-block;
+  padding: 0.9375rem 3.75rem 0.875rem;
+}
+
+/**
+* Header(Project)
+* ========================= */
+/* SP版では上下のpaddingを小さくし、本文の表示領域を確保
+ */
+.p-header {
+  background-color: white;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  z-index: 99;
+  -webkit-box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+          box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+  /* PC版では上下のpaddingをカンプ通りの値に設定 */
+  /* 最大コンテンツ幅を規定 */
+  /* ヘッダの内容は横並び */
+}
+@media screen and (min-width: 768px) {
+  .p-header {
+    padding-top: 2.9375rem;
+    padding-bottom: 3.625rem;
+  }
+}
+.p-header__inner {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1248px;
+  padding: 0 24px;
+}
+.p-header__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/**
+* Header Logo
+* ========================= */
+/* ロゴ */
+.p-header__logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+/**
+* Header Navigation
+* ========================= */
+/* ナビゲーション
+ * SP版では上部側に退避させ非表示
+ * メニューボタンが押されたらスライドダウン
+ * 高さも固定(vh)
+ */
+.p-header__nav {
+  position: fixed;
+  background-color: white;
+  top: -45vh;
+  left: 0;
+  height: 40vh;
+  width: 100%;
+  -webkit-transition: top 0.3s;
+  transition: top 0.3s;
+  /* SP版はnavにドロップシャドウ */
+  -webkit-box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+          box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+  /* SP版はtopの操作でメニュー欄を移動 */
+  /* メニューは
+   * SP版：縦並び
+   * PC版：横並び
+   */
+  /* メニューの各アイテム */
+}
+.p-header__nav.js-active {
+  top: 0;
+  -webkit-transition: top 0.3s;
+  transition: top 0.3s;
+}
+@media screen and (min-width: 768px) {
+  .p-header__nav {
+    /* PC版はボックスシャドウは無し */
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
+    /* PC版は表示状態に設定 */
+    display: block;
+    position: static;
+    height: unset;
+    width: unset;
+  }
+}
+.p-header__nav-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  -webkit-column-gap: 2.8125rem;
+     -moz-column-gap: 2.8125rem;
+          column-gap: 2.8125rem;
+  row-gap: 2.8125rem;
+  padding-left: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .p-header__nav-items {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: unset;
+    -webkit-box-pack: normal;
+        -ms-flex-pack: normal;
+            justify-content: normal;
+  }
+}
+.p-header__nav-item {
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  /* SP版はメニューopen時に右から左に向かってフェードイン */
+  position: relative;
+  left: 10rem;
+  opacity: 0;
+  -webkit-transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
+  transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
+  /* PC版はメニューの位置は固定 */
+}
+@media screen and (min-width: 768px) {
+  .p-header__nav-item {
+    left: 0;
+    opacity: 1;
+  }
+}
+.js-active .p-header__nav-item {
+  left: 0;
+  opacity: 1;
+}
+.p-header__nav-item a:hover {
+  text-decoration: underline;
+}
+
+/**
+* Header Open Button
+* ========================= */
+/* ハンバーガーメニュー */
+/*ボタン外側*/
+.p-header__openbtn {
+  /* ボタン内側の基点となるためrelativeを指定。
+   * 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.3125rem;
+  /*ボタン内側*/
+  /*activeクラスが付与されると線が回転して×に*/
+  /* PC時は非表示 */
+}
+.p-header__openbtn span {
+  display: inline-block;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 25%;
+  height: 0.1875rem;
+  border-radius: 0.125rem;
+  background: #888;
+  width: 50%;
+}
+.p-header__openbtn span:nth-of-type(1) {
+  top: calc(30% - 0.09375rem);
+}
+.p-header__openbtn span:nth-of-type(2) {
+  top: calc(50% - 0.09375rem);
+}
+.p-header__openbtn span:nth-of-type(3) {
+  top: calc(70% - 0.09375rem);
+}
+.p-header__openbtn.js-active span:nth-of-type(1) {
+  top: calc(50% - 0.09375rem);
+  left: 25%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  width: 50%;
+}
+.p-header__openbtn.js-active span:nth-of-type(2) {
+  /*真ん中の線は透過*/
+  opacity: 0;
+}
+.p-header__openbtn.js-active span:nth-of-type(3) {
+  top: calc(50% - 0.09375rem);
+  left: 25%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 50%;
+}
+@media screen and (min-width: 768px) {
+  .p-header__openbtn {
+    display: none;
+  }
+}
+
+/**
+* First View
+* ========================= */
+.p-fv {
+  margin-top: 6rem;
+  width: 100%;
+  height: 70vh;
+  /* From 400px@320px To 823@800px */
+  background-image: url(../img/fv.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* SP版は背景画像を固定 */
+  /* background-attachment: fixed; */ /* iOS Safariのバグのため中止 */
+  text-align: center;
+  padding-top: clamp(6.25rem, -2rem + 41.25vw, 18.625rem);
+  /* From 100px@320px To 298@800px */
+  padding-top: 20vh;
+}
+@media screen and (min-width: 768px) {
+  .p-fv {
+    margin-top: 8.5625rem;
+    height: 51.4375rem;
+    height: clamp(25rem, 7.375rem + 88.125vw, 51.4375rem);
+    padding-top: clamp(6.25rem, -2rem + 41.25vw, 18.625rem);
+    /* PC版は背景画像をスクロールさせる */
+    background-attachment: scroll;
+  }
+}
+.p-fv__heading {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.4rem;
+  color: white;
+}
+@media screen and (min-width: 768px) {
+  .p-fv__heading {
+    font-size: 5rem;
+  }
+}
+
+/**
+* Service
+* ========================= */
+.p-service {
+  background-color: #f6f6f6;
+  padding-top: 3.75rem;
+  /* SP版はセクション間のpaddingを小さくする */
+  padding-bottom: 5rem;
+  /* カード
+   * SP版：縦並び
+   * PC版：横並び
+   */
+}
+@media screen and (min-width: 768px) {
+  .p-service {
+    padding-bottom: 6.25rem;
+  }
+}
+.p-service__inner {
+  max-width: 1248px;
+  padding: 0 24px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.p-service__cards {
+  margin-top: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-column-gap: 1.875rem;
+     -moz-column-gap: 1.875rem;
+          column-gap: 1.875rem;
+  row-gap: 1.875rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .p-service__cards {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: unset;
+  }
+}
+.p-service__card {
+  background-color: #fff;
+  border-radius: 4.625rem;
+  padding: 1.875rem 2.5rem 4.625rem;
+  /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+  width: 70vw;
+  min-width: 20.4375rem;
+}
+.p-service__image {
+  text-align: center;
+}
+.p-service__image img {
+  max-width: 12.5rem;
+  width: 100%;
+}
+.p-service__name {
+  margin-top: 0.625rem;
+  text-align: center;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+}
+.p-service__name--fullbleed {
+  margin-right: -2.5rem;
+  margin-left: -2.5rem;
+}
+.p-service__description {
+  margin-top: 0.75rem;
+  letter-spacing: 0.02rem;
+}
+.p-service__more {
+  margin-top: 3rem;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .p-service__more {
+    margin-top: 5.625rem;
+  }
+}
+
+/**
+* Works
+* ========================= */
+.p-works {
+  padding-top: 4.9375rem;
+  /* SP版はセクション間のpaddingを小さくする */
+  padding-bottom: 5rem;
+  /* カード
+   * SP版：縦並び
+   * PC版：横並び
+   */
+}
+@media screen and (min-width: 768px) {
+  .p-works {
+    padding-bottom: 3.125rem;
+  }
+}
+.p-works__inner {
+  max-width: 1248px;
+  padding: 0 24px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.p-works__cards {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: auto;
+  -webkit-column-gap: 1.875rem;
+     -moz-column-gap: 1.875rem;
+          column-gap: 1.875rem;
+  row-gap: 4rem;
+  margin-top: 4.6875rem;
+}
+@media screen and (min-width: 768px) {
+  .p-works__cards {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.p-works__card {
+  /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+  width: 70vw;
+  min-width: 20.4375rem;
+  justify-self: center;
+}
+@media screen and (min-width: 768px) {
+  .p-works__card {
+    width: unset;
+  }
+}
+.p-works__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 380/269;
+}
+.p-works__content {
+  margin-top: 1.25rem;
+}
+.p-works__name {
+  margin-top: 0.25rem;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .p-works__name {
+    text-align: unset;
+  }
+}
+.p-works__description {
+  margin-top: 1rem;
+  letter-spacing: 0.02rem;
+}
+.p-works__more {
+  margin-top: 3rem;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .p-works__more {
+    margin-top: 8.125rem;
+  }
+}
+
+/**
+* Footer(Project)
+* ========================= */
+.p-footer {
+  font-size: 0.875rem;
+  background-color: #a7a4a4;
+  text-align: center;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  letter-spacing: 0.1rem;
+}
+
+/**
+* Footer
+* ========================= */
+/* Utility */
+@media screen and (min-width: 768px) {
+  .u-sp-only {
+    display: none;
+  }
+}
+
+/**
+* Foundation
+* ========================= */
+/**
+* Layout
+* ========================= */
+/**
+* Component
+* ========================= */
+/**
+* Project
+* ========================= */
+/**
+* Utility
+* ========================= */

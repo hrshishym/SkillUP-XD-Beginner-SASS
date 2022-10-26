@@ -1,0 +1,24 @@
+/**
+* Break Points
+* ========================== */
+
+// $breakpoints: ('xs': (min-width: 0),
+//     'sm': (min-width: 576px),
+//     'md': (min-width: 768px),
+//     'lg': (min-width: 992px),
+//     'xl': (min-width: 1200px),
+//     'xxl': (min-width: 1400px)
+// ) !default;
+
+$sp: 375px;
+$pc: 768px;
+
+$breakpoints: (
+    'sp': (min-width: $sp),
+    'pc': (min-width: $pc)
+) !default;
+
+$breakpoints-max: (
+    'sp': (max-width: $sp),
+    'pc': (max-width: $pc)
+) !default;

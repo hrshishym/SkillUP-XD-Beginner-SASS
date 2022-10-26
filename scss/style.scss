@@ -1,0 +1,36 @@
+/**
+* Foundation
+* ========================= */
+@use "./foundation/variable";
+@use "./foundation/function";
+@use "./foundation/base";
+
+/**
+* Layout
+* ========================= */
+// ヘッダー部は長くなりそうだったので更に分割
+@use "./layout/header/l-header";
+@use "./layout/footer/l-footer";
+
+/**
+* Component
+* ========================= */
+@use "./object/component/c-section-heading";
+@use "./object/component/c-more-button";
+
+/**
+* Project
+* ========================= */
+@use "./object/project/p-header";
+@use "./object/project/p-header__logo";
+@use "./object/project/p-header__nav";
+@use "./object/project/p-header__openbtn";
+@use "./object/project/p-fv";
+@use "./object/project/p-service";
+@use "./object/project/p-works";
+@use "./object/project/p-footer";
+
+/**
+* Utility
+* ========================= */
+@use "./object/utility/u-sp-only";

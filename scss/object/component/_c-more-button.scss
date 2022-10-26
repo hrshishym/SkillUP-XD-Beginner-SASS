@@ -1,0 +1,39 @@
+/**
+* More button
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+.c-more-button {
+    font-family     : g.$font-family-more;
+    font-size       : f.rem(24px);
+    text-transform  : uppercase;
+    border-radius   : 0;
+    border          : solid 1px black;
+    background-color: transparent;
+    position        : relative;
+    z-index         : 2;
+
+    &::before {
+        position        : absolute;
+        content         : "";
+        width           : 100%;
+        height          : 100%;
+        background-color: #c7c8c0;
+        top             : 0;
+        left            : 0;
+        z-index         : -1;
+        transition      : opacity .3s;
+        opacity         : 0;
+    }
+
+    &:hover::before {
+        opacity   : 1;
+        transition: opacity .3s;
+    }
+
+    & a {
+        display: inline-block;
+        padding: f.rem(15px) f.rem(60px) f.rem(14px);
+    }
+}

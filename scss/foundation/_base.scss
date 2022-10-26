@@ -1,0 +1,70 @@
+/**
+* Base
+* ========================== */
+@use "./variable" as g;
+@use "./function" as f;
+@use "./breakpoints" as bp;
+
+* {
+    box-sizing           : border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+
+    font-size: 100%;
+    @media screen and (max-width: bp.$sp) {
+        /* ~375px */
+        font-size: 4.2666vw; // 本当は数式で計算
+    }
+    
+    @include f.mq(pc) {
+        /* 768px ~ インナー幅 + 余白 */
+        font-size: clamp(10px, 1.282051282051282vw, 16px); // 本当は数式で計算
+    }
+}
+
+body {
+    font-family: g.$font-family;
+    margin     : 0;
+
+}
+
+img {
+    width         : 100%;
+    height        : auto;
+    vertical-align: bottom;
+}
+
+h1,
+h2,
+h3 {
+    margin     : 0;
+    font-size  : unset;
+    font-weight: unset;
+}
+
+a {
+    text-decoration: none;
+    color          : g.$color-font;
+}
+
+ul {    
+    margin: 0ch;
+}
+
+section {
+    scroll-margin-top: 6rem; // 本当はJavaScriptで計算したほうが良い
+
+    @include f.mq(pc) {
+        scroll-margin-top: 8.5625rem; // 本当はJavaScriptで計算したほうが良い
+    }
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    padding: 0;
+}

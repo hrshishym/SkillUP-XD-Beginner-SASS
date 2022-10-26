@@ -1,0 +1,12 @@
+/**
+* Footer
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* Utility */
+.u-sp-only {
+    @include f.mq(pc) {
+        display: none;
+    }
+}

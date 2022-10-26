@@ -1,0 +1,90 @@
+/**
+* Service
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+.p-service {
+    background-color: g.$color-bg-service;
+    padding-top     : f.rem(60px);;
+    /* SP版はセクション間のpaddingを小さくする */
+    padding-bottom  : f.rem(80px);
+
+    @include f.mq(pc) {
+        padding-bottom: f.rem(100px);
+    }
+
+    &__inner {
+        max-width   : g.$inner-width + g.$inner-padding * 2;
+        padding     : 0 g.$inner-padding;
+        margin-right: auto;
+        margin-left : auto;
+    }
+
+    /* カード
+     * SP版：縦並び
+     * PC版：横並び
+     */
+    &__cards {
+        margin-top    : f.rem(64px);
+        display       : flex;
+        flex-direction: column;
+        column-gap    : f.rem(30px);
+        row-gap       : f.rem(30px);
+        align-items   : center;
+
+        @include f.mq(pc) {
+            flex-direction: row;
+            width         : unset;
+        }
+    }
+
+    &__card {
+        background-color: #fff;
+        border-radius   : f.rem(74px);
+        padding         : f.rem(30px) f.rem(40px) f.rem(74px);
+        /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+        width           : 70vw;
+        min-width       : f.rem(327px);
+    }
+
+    &__image {
+        text-align: center;
+    }
+
+    &__image img {
+        max-width: f.rem(200px);
+        width    : 100%;
+    }
+
+    &__name {
+        margin-top    : f.rem(10px);
+        text-align    : center;
+        font-size     : f.rem(19px);
+        font-weight   : 700;
+        letter-spacing: 0.06rem;
+    }
+    
+    &__name--fullbleed {
+        margin-right: f.rem(-40px);
+        margin-left : f.rem(-40px);
+    }
+    
+    &__description {
+        margin-top    : f.rem(12px);
+        letter-spacing: 0.02rem;
+    }
+    
+    &__more {
+        margin-top: f.rem(48px);
+        text-align: center;
+
+        @include f.mq(pc) {
+            margin-top: f.rem(90px);
+        }
+    }
+}
+
+
+
+

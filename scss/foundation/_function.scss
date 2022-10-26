@@ -1,0 +1,56 @@
+/**
+* Functions
+* ========================== */
+@use "sass:math";
+@use "./breakpoints"as bp;
+
+// メディアクエリ
+@mixin mq($breakpoint) {
+    @if map-has-key(bp.$breakpoints, $breakpoint) {
+        @media screen and #{inspect(map-get(bp.$breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+
+    @else {
+        @error "指定されたブレークポイントは定義されていません。"+"指定できるブレークポイントは次のとおりです。 -> #{map-keys($breakpoints)}";
+    }
+}
+
+@function strip-unit($number) {
+    @if type-of($number)=='number'and not unitless($number) {
+        @return math.div($number, ($number * 0 + 1));
+    }
+
+    @return $number;
+}
+
+// px -> rem
+@function rem($px, $base: 16px) {
+    $value: $px;
+
+    // 単位がpx以外の場合は警告を出してそのまま返す
+    @if (unit($px) !='px') {
+        @warn 'rem()の引数にpx以外の値を指定しても計算できません';
+        @return $value;
+    }
+
+    $value: math.div(strip-unit($px), strip-unit($base)) * 1rem;
+
+    @return $value;
+}
+
+// px -> vw
+@function vw($px, $base: 375px) {
+    $value: $px;
+
+    // 単位がpx以外の場合は警告を出してそのまま返す
+    @if (unit($px) !='px') {
+        @warn 'vw()の引数にpx以外の値を指定しても計算できません';
+        @return $value;
+    }
+
+    $value: math.div(strip-unit($px), strip-unit($base)) * 100vw;
+
+    @return $value;
+}

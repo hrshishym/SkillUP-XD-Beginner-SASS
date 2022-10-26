@@ -1,0 +1,39 @@
+/**
+* Header(Project)
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* SP版では上下のpaddingを小さくし、本文の表示領域を確保
+ */
+.p-header {
+    background-color: white;
+    padding-top     : f.rem(24px);
+    padding-bottom  : f.rem(24px);
+    z-index         : 99;
+    box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
+
+    /* PC版では上下のpaddingをカンプ通りの値に設定 */
+    @include f.mq(pc) {
+        padding-top   : f.rem(47px);
+        padding-bottom: f.rem(58px);
+
+    }
+
+    /* 最大コンテンツ幅を規定 */
+    &__inner {
+        margin-right: auto;
+        margin-left : auto;
+        max-width   : g.$inner-width + g.$inner-padding * 2;
+        padding     : 0 g.$inner-padding;
+    }
+    
+    /* ヘッダの内容は横並び */
+    &__content {
+        display        : flex;
+        flex-direction : row;
+        justify-content: space-between;
+        align-items    : center;
+    }
+
+}

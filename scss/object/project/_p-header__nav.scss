@@ -1,0 +1,87 @@
+/**
+* Header Navigation
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* ナビゲーション
+ * SP版では上部側に退避させ非表示
+ * メニューボタンが押されたらスライドダウン
+ * 高さも固定(vh)
+ */
+.p-header__nav {
+    position        : fixed;
+    background-color: white;
+    top             : -45vh;
+    left            : 0;
+    height          : 40vh;
+    width           : 100%;
+    transition      : top .3s;
+    /* SP版はnavにドロップシャドウ */
+    box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
+
+    /* SP版はtopの操作でメニュー欄を移動 */
+    &.js-active {
+        top       : 0;
+        transition: top .3s;
+    }
+
+    @include f.mq(pc) {
+        /* PC版はボックスシャドウは無し */
+        box-shadow: unset;
+        /* PC版は表示状態に設定 */
+        display : block;
+        position: static;
+        height  : unset;
+        width   : unset;
+    }
+    
+    /* メニューは
+     * SP版：縦並び
+     * PC版：横並び
+     */
+    &-items {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        height         : 100%;
+        column-gap     : f.rem(45px);
+        row-gap        : f.rem(45px);
+        padding-left   : 4rem;
+
+        @include f.mq(pc) {
+            flex-direction : row;
+            height         : unset;
+            justify-content: normal;
+        }
+    }
+
+    /* メニューの各アイテム */
+    &-item {
+        list-style    : none;
+        font-family   : 'Montserrat', sans-serif;
+        font-size     : f.rem(26px);
+        font-weight   : 700;
+        letter-spacing: 0.1rem;
+        /* SP版はメニューopen時に右から左に向かってフェードイン */
+        position      : relative;
+        left          : f.rem(160px);
+        opacity       : 0;
+        transition    : left .3s .2s, opacity .3s .2s;
+
+        /* PC版はメニューの位置は固定 */
+        @include f.mq(pc) {
+            left   : 0;
+            opacity: 1;
+        }
+    }
+
+    .js-active &-item {
+        left   : 0;
+        opacity: 1;
+    }
+
+    &-item a:hover {
+        text-decoration: underline;
+    }
+}

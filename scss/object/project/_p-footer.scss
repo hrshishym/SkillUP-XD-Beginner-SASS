@@ -1,0 +1,14 @@
+/**
+* Footer(Project)
+* ========================= */
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+.p-footer {
+    font-size       : f.rem(14px);
+    background-color: g.$color-bg-footer;
+    text-align      : center;
+    padding-top     : f.rem(40px);
+    padding-bottom  : f.rem(40px);
+    letter-spacing  : 0.1rem;
+}
