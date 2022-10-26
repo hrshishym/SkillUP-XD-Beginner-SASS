@@ -20,8 +20,8 @@
     /* SP版はnavにドロップシャドウ */
     box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
 
-    /* SP版はtopの操作でメニュー欄を移動 */
     &.js-active {
+        /* SP版はtopの操作でメニュー欄を移動 */
         top       : 0;
         transition: top .3s;
     }
@@ -36,11 +36,11 @@
         width   : unset;
     }
     
-    /* メニューは
-     * SP版：縦並び
-     * PC版：横並び
-     */
     &-items {
+        /* メニューは
+         * SP版：縦並び
+         * PC版：横並び
+         */
         display        : flex;
         flex-direction : column;
         justify-content: center;
@@ -56,8 +56,8 @@
         }
     }
 
-    /* メニューの各アイテム */
     &-item {
+        /* メニューの各アイテム */
         list-style    : none;
         font-family   : 'Montserrat', sans-serif;
         font-size     : f.rem(26px);
@@ -69,8 +69,8 @@
         opacity       : 0;
         transition    : left .3s .2s, opacity .3s .2s;
 
-        /* PC版はメニューの位置は固定 */
         @include f.mq(pc) {
+            /* PC版はメニューの位置は固定 */
             left   : 0;
             opacity: 1;
         }

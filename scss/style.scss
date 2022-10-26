@@ -1,26 +1,25 @@
-/**
-* Foundation
-* ========================= */
+// *
+// * Foundation
+// * =========================
 @use "./foundation/variable";
 @use "./foundation/function";
 @use "./foundation/base";
 
-/**
-* Layout
-* ========================= */
-// ヘッダー部は長くなりそうだったので更に分割
+// *
+// * Layout
+// * =========================
 @use "./layout/header/l-header";
 @use "./layout/footer/l-footer";
 
-/**
-* Component
-* ========================= */
+// *
+// * Component
+// * =========================
 @use "./object/component/c-section-heading";
 @use "./object/component/c-more-button";
 
-/**
-* Project
-* ========================= */
+// *
+// * Project
+// * =========================
 @use "./object/project/p-header";
 @use "./object/project/p-header__logo";
 @use "./object/project/p-header__nav";
@@ -30,7 +29,7 @@
 @use "./object/project/p-works";
 @use "./object/project/p-footer";
 
-/**
-* Utility
-* ========================= */
+// *
+// * Utility
+// * =========================
 @use "./object/utility/u-sp-only";

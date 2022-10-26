@@ -21,11 +21,11 @@
         margin-left : auto;
     }
 
-    /* カード
-     * SP版：縦並び
-     * PC版：横並び
-     */
     &__cards {
+        /* カード
+         * SP版：縦並び
+         * PC版：横並び
+         */
         margin-top    : f.rem(64px);
         display       : flex;
         flex-direction: column;
