@@ -26,4 +26,4 @@ function closeNav() {
 closeNav();
 
 // Animation on Scroll
-AOS.init();
+// AOS.init();
