@@ -52,8 +52,10 @@
     }
 
     @include f.mq(pc) {
-        left   : 0;
-        opacity: 1;
+        &__item {
+            left   : 0;
+            opacity: 1;
+        }
     }
 
     &__item a:hover {

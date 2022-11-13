@@ -88,6 +88,8 @@ button {
   top: 0;
   position: fixed;
   width: 100%;
+  background-color: #fff;
+  z-index: 99;
 }
 
 /**
@@ -265,7 +267,7 @@ button {
 /* SP版では上下のpaddingを小さくし、本文の表示領域を確保
  */
 .p-header {
-  background-color: white;
+  background-color: #fff;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   z-index: 99;
@@ -311,7 +313,7 @@ button {
 }
 .p-header__nav {
   position: fixed;
-  background-color: white;
+  background-color: #fff;
   top: -45vh;
   left: 0;
   height: 40vh;
@@ -456,7 +458,7 @@ button {
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
-  .p-nav {
+  .p-nav__item {
     left: 0;
     opacity: 1;
   }

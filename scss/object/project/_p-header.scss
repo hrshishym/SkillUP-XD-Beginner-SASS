@@ -7,7 +7,7 @@
 /* SP版では上下のpaddingを小さくし、本文の表示領域を確保
  */
 .p-header {
-    background-color: white;
+    background-color: #fff;
     padding-top     : f.rem(24px);
     padding-bottom  : f.rem(24px);
     z-index         : 99;
@@ -46,7 +46,7 @@
 
     &__nav {
         position        : fixed;
-        background-color: white;
+        background-color: #fff;
         top             : -45vh;
         left            : 0;
         height          : 40vh;
