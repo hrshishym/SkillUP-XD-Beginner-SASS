@@ -1,0 +1,67 @@
+@use "../../foundation/variable"as g;
+@use "../../foundation/function"as f;
+
+/* ナビゲーション */
+.p-nav {
+    background-color: #fff;
+    /* SP版はnavにドロップシャドウ */
+    box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
+
+    @include f.mq(pc) {
+        /* PC版はボックスシャドウは無し */
+        box-shadow: unset;
+        /* PC版は表示状態に設定 */
+        display   : block;
+        position  : static;
+        height    : unset;
+        width     : unset;
+    }
+
+    /* メニューは
+     * SP版：縦並び
+     * PC版：横並び
+     */
+    &__items {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        height         : 100%;
+        column-gap     : 2.8rem;
+        row-gap        : 2.8rem;
+        padding-left   : 4rem;
+
+        @include f.mq(pc) {
+            flex-direction : row;
+            height         : unset;
+            justify-content: normal;
+        }
+    }
+
+    &__item {
+        list-style    : none;
+        font-family   : 'Montserrat', sans-serif;
+        font-size     : 1.625rem;
+        font-weight   : 700;
+        letter-spacing: 0.10rem;
+        /* SP版はメニューopen時に右から左に向かってフェードイン */
+        position      : relative;
+        left          : 10rem;
+        opacity       : 0;
+        transition    : left .3s .2s, opacity .3s .2s;
+        text-transform: uppercase;
+    }
+
+    @include f.mq(pc) {
+        left   : 0;
+        opacity: 1;
+    }
+
+    &__item a:hover {
+        text-decoration: underline;
+    }
+
+    .js-active &__item {
+        left   : 0;
+        opacity: 1;
+    }
+}

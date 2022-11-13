@@ -13,29 +13,8 @@
         padding-bottom: f.rem(50px);
     }
 
-    &__inner {
-        max-width   : g.$inner-width + g.$inner-padding * 2;
-        padding     : 0 g.$inner-padding;
-        margin-right: auto;
-        margin-left : auto;
-    }
-    
     &__cards {
-        /* カード
-         * SP版：縦並び
-         * PC版：横並び
-         */
-        display              : grid;
-        grid-template-rows   : 1fr 1fr 1fr;
-        grid-template-columns: auto;
-        column-gap           : f.rem(30px);
-        row-gap              : f.rem(64px);
         margin-top           : f.rem(75px);
-
-        @include f.mq(pc) {
-            grid-template-rows   : auto;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
     }
     
     &__card {
@@ -49,32 +28,6 @@
         }
     }
 
-    &__image img {
-        object-fit  : cover;
-        aspect-ratio: 380 / 269;
-    }
-    
-    &__content {
-        margin-top: f.rem(20px);
-    }
-    
-    &__name {
-        margin-top    : f.rem(4px);
-        font-size     : f.rem(19px);
-        font-weight   : 700;
-        letter-spacing: 0.06rem;
-        text-align: center;
-
-        @include f.mq(pc) {
-            text-align: unset;
-        }
-    }
-    
-    &__description {
-        margin-top    : f.rem(16px);
-        letter-spacing: 0.02rem;
-    }
-    
     &__more {
         margin-top: f.rem(48px);
         text-align: center;

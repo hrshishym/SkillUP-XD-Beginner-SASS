@@ -69,6 +69,16 @@ button {
   padding: 0;
 }
 
+/* Inner width */
+/* 最大コンテンツ幅を規定 */
+.l-inner {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 78rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
 /**
 * Header(Layout)
 * ========================= */
@@ -143,6 +153,112 @@ button {
   padding: 0.9375rem 3.75rem 0.875rem;
 }
 
+/* カードタイプ1 */
+.c-cards1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-column-gap: 2.5%;
+     -moz-column-gap: 2.5%;
+          column-gap: 2.5%;
+  row-gap: 1.875rem;
+}
+@media screen and (min-width: 768px) {
+  .c-cards1 {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+.c-cards1__item {
+  margin-right: auto;
+  margin-left: auto;
+  /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+  width: 70vw;
+}
+
+.c-card1 {
+  background-color: #fff;
+  border-radius: 4.625rem;
+  padding: 1.875rem 2.5rem 4.625rem;
+}
+.c-card1__image {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  max-width: 12.5rem;
+}
+.c-card1__heading {
+  margin-top: 0.625rem;
+  text-align: center;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+}
+.c-card1__heading--fullbleed {
+  margin-right: -2.5rem;
+  margin-left: -2.5rem;
+}
+.c-card1__text {
+  margin-top: 0.75rem;
+  letter-spacing: 0.02rem;
+}
+
+/* カードタイプ2 */
+.c-cards2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  -webkit-column-gap: 2.5%;
+     -moz-column-gap: 2.5%;
+          column-gap: 2.5%;
+  row-gap: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .c-cards2 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.c-cards2__item {
+  /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+  width: 70vw;
+  justify-self: center;
+}
+@media screen and (min-width: 768px) {
+  .c-cards2__item {
+    width: unset;
+  }
+}
+
+.c-card2__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 380/269;
+}
+.c-card2__content {
+  margin-top: 1.25rem;
+}
+.c-card2__heading {
+  margin-top: 0.25rem;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .c-card2__heading {
+    text-align: unset;
+  }
+}
+.c-card2__description {
+  margin-top: 1rem;
+  letter-spacing: 0.02rem;
+}
+
 /**
 * Header(Project)
 * ========================= */
@@ -186,11 +302,6 @@ button {
       -ms-flex-align: center;
           align-items: center;
 }
-
-/**
-* Header Logo
-* ========================= */
-/* ロゴ */
 .p-header__logo {
   font-family: "Montserrat", sans-serif;
   font-size: 1.625rem;
@@ -198,15 +309,6 @@ button {
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
-
-/**
-* Header Navigation
-* ========================= */
-/* ナビゲーション
- * SP版では上部側に退避させ非表示
- * メニューボタンが押されたらスライドダウン
- * 高さも固定(vh)
- */
 .p-header__nav {
   position: fixed;
   background-color: white;
@@ -226,89 +328,9 @@ button {
   -webkit-transition: top 0.3s;
   transition: top 0.3s;
 }
-@media screen and (min-width: 768px) {
-  .p-header__nav {
-    /* PC版はボックスシャドウは無し */
-    -webkit-box-shadow: unset;
-            box-shadow: unset;
-    /* PC版は表示状態に設定 */
-    display: block;
-    position: static;
-    height: unset;
-    width: unset;
-  }
-}
-.p-header__nav-items {
-  /* メニューは
-   * SP版：縦並び
-   * PC版：横並び
-   */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100%;
-  -webkit-column-gap: 2.8125rem;
-     -moz-column-gap: 2.8125rem;
-          column-gap: 2.8125rem;
-  row-gap: 2.8125rem;
-  padding-left: 4rem;
-}
-@media screen and (min-width: 768px) {
-  .p-header__nav-items {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    height: unset;
-    -webkit-box-pack: normal;
-        -ms-flex-pack: normal;
-            justify-content: normal;
-  }
-}
-.p-header__nav-item {
-  /* メニューの各アイテム */
-  list-style: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.625rem;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
-  /* SP版はメニューopen時に右から左に向かってフェードイン */
-  position: relative;
-  left: 10rem;
-  opacity: 0;
-  -webkit-transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
-  transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
-}
-@media screen and (min-width: 768px) {
-  .p-header__nav-item {
-    /* PC版はメニューの位置は固定 */
-    left: 0;
-    opacity: 1;
-  }
-}
-.js-active .p-header__nav-item {
-  left: 0;
-  opacity: 1;
-}
-.p-header__nav-item a:hover {
-  text-decoration: underline;
-}
-
-/**
-* Header Open Button
-* ========================= */
-/* ハンバーガーメニュー */
-/*ボタン外側*/
 .p-header__openbtn {
   /* ボタン内側の基点となるためrelativeを指定。
-   * 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
+  * 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
   position: relative;
   background: #fff;
   cursor: pointer;
@@ -364,6 +386,87 @@ button {
     /* PC時は非表示 */
     display: none;
   }
+}
+
+/* ナビゲーション */
+.p-nav {
+  background-color: #fff;
+  /* SP版はnavにドロップシャドウ */
+  -webkit-box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+          box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5);
+  /* メニューは
+   * SP版：縦並び
+   * PC版：横並び
+   */
+}
+@media screen and (min-width: 768px) {
+  .p-nav {
+    /* PC版はボックスシャドウは無し */
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
+    /* PC版は表示状態に設定 */
+    display: block;
+    position: static;
+    height: unset;
+    width: unset;
+  }
+}
+.p-nav__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  -webkit-column-gap: 2.8rem;
+     -moz-column-gap: 2.8rem;
+          column-gap: 2.8rem;
+  row-gap: 2.8rem;
+  padding-left: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .p-nav__items {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: unset;
+    -webkit-box-pack: normal;
+        -ms-flex-pack: normal;
+            justify-content: normal;
+  }
+}
+.p-nav__item {
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  /* SP版はメニューopen時に右から左に向かってフェードイン */
+  position: relative;
+  left: 10rem;
+  opacity: 0;
+  -webkit-transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
+  transition: left 0.3s 0.2s, opacity 0.3s 0.2s;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .p-nav {
+    left: 0;
+    opacity: 1;
+  }
+}
+.p-nav__item a:hover {
+  text-decoration: underline;
+}
+.js-active .p-nav__item {
+  left: 0;
+  opacity: 1;
 }
 
 /**
@@ -422,71 +525,8 @@ button {
     padding-bottom: 6.25rem;
   }
 }
-.p-service__inner {
-  max-width: 78rem;
-  padding: 0 1.5rem;
-  margin-right: auto;
-  margin-left: auto;
-}
 .p-service__cards {
-  /* カード
-   * SP版：縦並び
-   * PC版：横並び
-   */
   margin-top: 4rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-column-gap: 1.875rem;
-     -moz-column-gap: 1.875rem;
-          column-gap: 1.875rem;
-  row-gap: 1.875rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-@media screen and (min-width: 768px) {
-  .p-service__cards {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    width: unset;
-  }
-}
-.p-service__card {
-  background-color: #fff;
-  border-radius: 4.625rem;
-  padding: 1.875rem 2.5rem 4.625rem;
-  /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
-  width: 70vw;
-  min-width: 20.4375rem;
-}
-.p-service__image {
-  text-align: center;
-}
-.p-service__image img {
-  max-width: 12.5rem;
-  width: 100%;
-}
-.p-service__name {
-  margin-top: 0.625rem;
-  text-align: center;
-  font-size: 1.1875rem;
-  font-weight: 700;
-  letter-spacing: 0.06rem;
-}
-.p-service__name--fullbleed {
-  margin-right: -2.5rem;
-  margin-left: -2.5rem;
-}
-.p-service__description {
-  margin-top: 0.75rem;
-  letter-spacing: 0.02rem;
 }
 .p-service__more {
   margin-top: 3rem;
@@ -511,31 +551,8 @@ button {
     padding-bottom: 3.125rem;
   }
 }
-.p-works__inner {
-  max-width: 78rem;
-  padding: 0 1.5rem;
-  margin-right: auto;
-  margin-left: auto;
-}
 .p-works__cards {
-  /* カード
-   * SP版：縦並び
-   * PC版：横並び
-   */
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: auto;
-  -webkit-column-gap: 1.875rem;
-     -moz-column-gap: 1.875rem;
-          column-gap: 1.875rem;
-  row-gap: 4rem;
   margin-top: 4.6875rem;
-}
-@media screen and (min-width: 768px) {
-  .p-works__cards {
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 .p-works__card {
   /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
@@ -547,30 +564,6 @@ button {
   .p-works__card {
     width: unset;
   }
-}
-.p-works__image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  aspect-ratio: 380/269;
-}
-.p-works__content {
-  margin-top: 1.25rem;
-}
-.p-works__name {
-  margin-top: 0.25rem;
-  font-size: 1.1875rem;
-  font-weight: 700;
-  letter-spacing: 0.06rem;
-  text-align: center;
-}
-@media screen and (min-width: 768px) {
-  .p-works__name {
-    text-align: unset;
-  }
-}
-.p-works__description {
-  margin-top: 1rem;
-  letter-spacing: 0.02rem;
 }
 .p-works__more {
   margin-top: 3rem;

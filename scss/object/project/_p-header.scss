@@ -1,8 +1,8 @@
 /**
 * Header(Project)
 * ========================= */
-@use "../../foundation/variable" as g;
-@use "../../foundation/function" as f;
+@use "../../foundation/variable"as g;
+@use "../../foundation/function"as f;
 
 /* SP版では上下のpaddingを小さくし、本文の表示領域を確保
  */
@@ -27,7 +27,7 @@
         max-width   : g.$inner-width + g.$inner-padding * 2;
         padding     : 0 g.$inner-padding;
     }
-    
+
     &__content {
         /* ヘッダの内容は横並び */
         display        : flex;
@@ -36,4 +36,93 @@
         align-items    : center;
     }
 
+    &__logo {
+        font-family   : g.$font-family-logo;
+        font-size     : f.rem(26px);
+        font-weight   : 700;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+    }
+
+    &__nav {
+        position        : fixed;
+        background-color: white;
+        top             : -45vh;
+        left            : 0;
+        height          : 40vh;
+        width           : 100%;
+        transition      : top .3s;
+        /* SP版はnavにドロップシャドウ */
+        box-shadow      : 0 5px 5px rgba(128, 128, 128, .5);
+
+        &.js-active {
+            /* SP版はtopの操作でメニュー欄を移動 */
+            top       : 0;
+            transition: top .3s;
+        }
+    }
+
+    &__openbtn {
+        /* ボタン内側の基点となるためrelativeを指定。
+     * 追従するナビゲーションの場合はfixed+top、rightといった位置をセットで指定*/
+        position     : relative;
+        background   : #fff;
+        cursor       : pointer;
+        width        : f.rem(48px);
+        height       : f.rem(48px);
+        border-radius: f.rem(5px);
+
+        & span {
+            /*ボタン内側*/
+            display      : inline-block;
+            transition   : all .4s;
+            /*アニメーションの設定*/
+            position     : absolute;
+            left         : 25%;
+            height       : f.rem(3px);
+            border-radius: f.rem(2px);
+            background   : #888;
+            width        : 50%;
+
+            &:nth-of-type(1) {
+                top: calc(30% - f.rem(1.5px));
+            }
+
+            &:nth-of-type(2) {
+                top: calc(50% - f.rem(1.5px));
+            }
+
+            &:nth-of-type(3) {
+                top: calc(70% - f.rem(1.5px));
+            }
+        }
+
+        &.js-active {
+
+            /*activeクラスが付与されると線が回転して×に*/
+            & span:nth-of-type(1) {
+                top      : calc(50% - f.rem(1.5px));
+                left     : calc(25%);
+                transform: rotate(-45deg);
+                width    : 50%;
+            }
+
+            & span:nth-of-type(2) {
+                /*真ん中の線は透過*/
+                opacity: 0;
+            }
+
+            & span:nth-of-type(3) {
+                top      : calc(50% - f.rem(1.5px));
+                left     : calc(25%);
+                transform: rotate(45deg);
+                width    : 50%;
+            }
+        }
+
+        @include f.mq(pc) {
+            /* PC時は非表示 */
+            display: none;
+        }
+    }
 }

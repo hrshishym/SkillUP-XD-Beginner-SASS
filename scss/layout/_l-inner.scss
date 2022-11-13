@@ -1,0 +1,12 @@
+@use "../foundation/variable" as g;
+@use "../foundation/function" as f;
+
+/* Inner width */
+/* 最大コンテンツ幅を規定 */
+.l-inner {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: g.$inner-width + g.$inner-padding * 2;
+    padding-right: g.$inner-padding;
+    padding-left: g.$inner-padding;
+}

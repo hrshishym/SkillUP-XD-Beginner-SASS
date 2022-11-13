@@ -1,0 +1,21 @@
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* カードタイプ1 */
+.c-cards1 {
+    display       : flex;
+    flex-direction: column;
+    column-gap    : 2.5%;
+    row-gap       : 1.875rem;
+
+    @include f.mq(pc) {
+        flex-direction: row;
+    }
+
+    &__item {
+        margin-right: auto;
+        margin-left : auto;
+        /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+        width       : 70vw;
+    }
+}

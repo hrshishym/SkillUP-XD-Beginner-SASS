@@ -1,0 +1,24 @@
+@use "../../foundation/variable" as g;
+@use "../../foundation/function" as f;
+
+/* カードタイプ2 */
+.c-cards2 {
+    display              : grid;
+    grid-template-columns: 1fr;
+    column-gap           : 2.5%;
+    row-gap              : 4rem;
+
+    @include f.mq(pc) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__item {
+        /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
+        width       : 70vw;
+        justify-self: center;
+
+        @include f.mq(pc) {
+            width: unset;
+        }
+    }
+}
