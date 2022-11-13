@@ -123,6 +123,7 @@ button {
 * More button
 * ========================= */
 .c-more-button {
+  display: inline-block;
   font-family: "Montserrat", sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -131,6 +132,7 @@ button {
   background-color: transparent;
   position: relative;
   z-index: 2;
+  padding: 0.9375rem 3.75rem 0.875rem;
 }
 .c-more-button::before {
   position: absolute;
@@ -229,11 +231,16 @@ button {
   /* SP版でも757px~500pxくらいまでは巾が広いのでvwで制限 */
   width: 70vw;
   justify-self: center;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 @media screen and (min-width: 768px) {
   .c-cards2__item {
     width: unset;
   }
+}
+.c-cards2__item:hover {
+  opacity: 0.7;
 }
 
 .c-card2__image img {
